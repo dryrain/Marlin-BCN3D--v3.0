@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.2</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
+    <ProjectGuid>{07b459b4-8d76-4638-bc6d-a459ba2d616b}</ProjectGuid>
+    <avrdevice>atmega2560</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>Marlin</AssemblyName>
+    <Name>Marlin</Name>
+    <RootNamespace>Marlin</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>
+    </OverrideVtorValue>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <CacheFlash>true</CacheFlash>
+    <UncachedRange />
+    <BootSegment>0</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.10.1" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=106</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value></Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire</Value>
+      <Value>../../Marlin</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=106</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value></Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire</Value>
+      <Value>../../Marlin</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino</Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;../../Marlin;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/utility;C:/Users/jcalduch/Documents/libraries/U8glib;C:/Users/jcalduch/Documents/libraries/U8glib/utility;C:/Program Files (x86)/Arduino/libraries/LiquidCrystal/src;C:/Program Files (x86)/Arduino/libraries/LiquidCrystal/src/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/jcalduch/Documents/libraries;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/;;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/standard;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.board.name>mega2560</arduino.board.name>
+        <arduino.board.desc>Arduino Mega 2560 or Mega ADK</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Mega 2560 or Mega ADK
+upload.protocol=wiring
+upload.maximum_size=258048
+upload.speed=115200
+bootloader.low_fuses=0xFF
+bootloader.high_fuses=0xD8
+bootloader.extended_fuses=0xFD
+bootloader.path=stk500v2
+bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=atmega2560
+build.f_cpu=16000000L
+build.core=arduino
+build.variant=mega
+runtime.ide.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6
+build.system.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino\system
+runtime.ide.version=106
+originalid=mega2560
+vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
+ide.hint=Arduino 0023 and 1.0.x Ide
+ide.location.key=Arduino
+ide.location.ide.winreg=Arduino 1.0.x Application
+ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook
+ide.location.sketchbook.preferences=sketchbook.path
+ide.location.sketchbook.default=%MYDOCUMENTS%\arduino
+ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
+ide.default.package=arduino
+ide.default.platform=avr
+ide.multiplatform=true
+ide.includes=arduino.h
+ide.platformswithoutpackage=true
+ide.includes.fallback=wprogram.h
+ide.extension=ino
+ide.extension.fallback=pde
+ide.versionLTEQ=149
+ide.exe=arduino.exe
+ide.hosts=atmel
+ide.url=http://arduino.cc/en/Main/Software
+vm.debug=true
+software=ARDUINO
+ide.appid=arduino10x
+location.sketchbook=C:\Users\jcalduch\Documents
+vm.core.include=arduino.h
+build.board=AVR_MEGA2560
+vm.boardsource.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino
+runtime.platform.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino
+vm.platformname.name=avr
+build.arch=AVR
+</arduino.board.property_bag>
+        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.build.core>arduino</arduino.build.core>
+        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.speed>115200</arduino.upload.speed>
+        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <visualmicro.application.name>arduino10x</visualmicro.application.name>
+        <visualmicro.package.name>arduino</visualmicro.package.name>
+        <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM30</arduino.upload.port>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=106</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value></Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire</Value>
+      <Value>../../Marlin</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=106</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value></Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/libraries/U8glib</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire</Value>
+      <Value>../../Marlin</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega</Value>
+      <Value>C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino</Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;../../Marlin;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/utility;C:/Users/jcalduch/Documents/libraries/U8glib;C:/Users/jcalduch/Documents/libraries/U8glib/utility;C:/Program Files (x86)/Arduino/libraries/LiquidCrystal/src;C:/Program Files (x86)/Arduino/libraries/LiquidCrystal/src/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/jcalduch/Documents/libraries;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/;;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/cores/arduino;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/standard;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/Wire/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/LiquidCrystal/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries/SPI/utility;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/libraries;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/libraries;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/include/avr/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/avr/;c:/users/jcalduch/documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Users/jcalduch/Documents/arduino-1.0.6-windows/arduino-1.0.6/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.board.name>mega2560</arduino.board.name>
+        <arduino.board.desc>Arduino Mega 2560 or Mega ADK</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Mega 2560 or Mega ADK
+upload.protocol=wiring
+upload.maximum_size=258048
+upload.speed=115200
+bootloader.low_fuses=0xFF
+bootloader.high_fuses=0xD8
+bootloader.extended_fuses=0xFD
+bootloader.path=stk500v2
+bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=atmega2560
+build.f_cpu=16000000L
+build.core=arduino
+build.variant=mega
+runtime.ide.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6
+build.system.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino\system
+runtime.ide.version=106
+originalid=mega2560
+vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
+ide.hint=Arduino 0023 and 1.0.x Ide
+ide.location.key=Arduino
+ide.location.ide.winreg=Arduino 1.0.x Application
+ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook
+ide.location.sketchbook.preferences=sketchbook.path
+ide.location.sketchbook.default=%MYDOCUMENTS%\arduino
+ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
+ide.default.package=arduino
+ide.default.platform=avr
+ide.multiplatform=true
+ide.includes=arduino.h
+ide.platformswithoutpackage=true
+ide.includes.fallback=wprogram.h
+ide.extension=ino
+ide.extension.fallback=pde
+ide.versionLTEQ=149
+ide.exe=arduino.exe
+ide.hosts=atmel
+ide.url=http://arduino.cc/en/Main/Software
+vm.debug=true
+software=ARDUINO
+ide.appid=arduino10x
+location.sketchbook=C:\Users\jcalduch\Documents
+vm.core.include=arduino.h
+build.board=AVR_MEGA2560
+vm.boardsource.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino
+runtime.platform.path=C:\Users\jcalduch\Documents\arduino-1.0.6-windows\arduino-1.0.6\hardware\arduino
+vm.platformname.name=avr
+build.arch=AVR
+</arduino.board.property_bag>
+        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.build.core>arduino</arduino.build.core>
+        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.speed>115200</arduino.upload.speed>
+        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <visualmicro.application.name>arduino10x</visualmicro.application.name>
+        <visualmicro.package.name>arduino</visualmicro.package.name>
+        <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM30</arduino.upload.port>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="boards.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cardreader.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cardreader.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="digipot_mcp4451.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dogm_font_data_marlin.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dogm_lcd_implementation.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="fastio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_an.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_ca.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_de.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_en.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_es.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_eu.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_fi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_fr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_it.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_nl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_pl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_pt-br.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_pt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language_ru.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MarlinSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MarlinSerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Marlin_main.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motion_control.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motion_control.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_3DRAG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_5DPRINT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_99.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_AZTEEG_X1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_AZTEEG_X3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_AZTEEG_X3_PRO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_BAM_DICE_DUE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_BRAINWAVE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_CHEAPTRONIC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_DUEMILANOVE_328P.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_ELEFU_3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN3_MONOLITHIC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN3_PLUS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN6.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN6_DELUXE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN7_12.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN7_13.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN7_14.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_GEN7_CUSTOM.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_HEPHESTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_K8200.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_LEAPFROG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MEGATRONICS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MEGATRONICS_1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MEGATRONICS_2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MEGATRONICS_3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MELZI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_MELZI_1284.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_OMCA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_OMCA_A.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_PRINTRBOARD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_RAMBO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_RAMPS_13.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_RAMPS_OLD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_RUMBA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_SANGUINOLOLU_11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_SANGUINOLOLU_12.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_SAV_MKI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_SETHI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_STB_11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_TEENSY2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_TEENSYLU.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_ULTIMAIN_2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_ULTIMAKER.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_ULTIMAKER_OLD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins_WITBOX.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="planner.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="planner.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="qr_solve.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="qr_solve.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sd2Card.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sd2Card.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sd2PinMap.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdBaseFile.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdBaseFile.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFatConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFatStructs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFatUtil.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFatUtil.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFile.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdFile.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdInfo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdVolume.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SdVolume.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Servo.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Servo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="speed_lookuptable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="stepper.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="stepper.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="temperature.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="temperature.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="thermistortables.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ultralcd.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ultralcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ultralcd_implementation_hitachi_HD44780.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ultralcd_st7920_u8glib_rrd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="vector_3.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="vector_3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Visual Micro\.Marlin.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="watchdog.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="watchdog.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="Marlin.ino">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="Marlin.pde">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Visual Micro\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlinkM.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BlinkM.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ConfigurationStore.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ConfigurationStore.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration_adv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DOGMbitmaps.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LiquidCrystalRus.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LiquidCrystalRus.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Marlin.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
