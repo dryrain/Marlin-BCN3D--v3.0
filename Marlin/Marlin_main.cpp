@@ -3930,11 +3930,11 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
         {
           // Park old head: 1) raise 2) move to park position 3) lower
           plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_PARK_ZLIFT,
-                current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
+                current_position[E_AXIS],max_feedrate[Z_AXIS]/3, active_extruder);
           plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_PARK_ZLIFT,
-                current_position[E_AXIS], max_feedrate[X_AXIS], active_extruder);
+                current_position[E_AXIS], max_feedrate[X_AXIS]/2, active_extruder);
           plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS],
-                current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
+                current_position[E_AXIS], max_feedrate[Z_AXIS]/3, active_extruder);
           st_synchronize();
         }
 		
@@ -3946,7 +3946,7 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
 			current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
 			plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_PARK_ZLIFT,
 			current_position[E_AXIS], max_feedrate[X_AXIS]/2, active_extruder);
-			//plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS] ,current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
+			plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS] ,current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
 			st_synchronize();
 		}
 
@@ -3968,6 +3968,8 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
         {
           //current_position[X_AXIS] = inactive_extruder_x_pos;
           //inactive_extruder_x_pos = destination[X_AXIS];
+		  memcpy(raised_parked_position, current_position, sizeof(raised_parked_position));
+		  raised_parked_position[Z_AXIS] += TOOLCHANGE_UNPARK_ZLIFT;
 		  active_extruder_parked = true;
         }
         else if (dual_x_carriage_mode == DXC_DUPLICATION_MODE)
@@ -4230,6 +4232,12 @@ for (int s = 1; s <= steps; s++) {
 	if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE)
 	{
 		 //plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT,current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
+		 plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS],    current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
+		 plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], raised_parked_position[Z_AXIS],
+		 current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
+		 plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS],
+		 current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
+		 st_synchronize();
 		 active_extruder_parked = false;
 	}
 	  
@@ -4262,11 +4270,11 @@ for (int s = 1; s <= steps; s++) {
 	  
       delayed_move_time = 0;
       // unpark extruder: 1) raise, 2) move into starting XY position, 3) lower
-      plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS],    current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
+      plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS],    current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
       plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], raised_parked_position[Z_AXIS],
-          current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]), active_extruder);
+          current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
       plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS],
-          current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
+          current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
       active_extruder_parked = false;
     }
   }

@@ -175,10 +175,10 @@
 // Configuration for second X-carriage
 // Note: the first x-carriage is defined as the x-carriage which homes to the minimum endstop;
 // the second x-carriage always homes to the maximum endstop.
-#define X2_MIN_POS 24     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
-#define X2_MAX_POS 265    // set maximum to the distance between toolheads when both heads are homed
+#define X2_MIN_POS 0     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
+#define X2_MAX_POS X_MAX_POS    // set maximum to the distance between toolheads when both heads are homed
 #define X2_HOME_DIR 1     // the second X-carriage always homes to the maximum endstop position
-#define X2_HOME_POS 295 // default home position is the maximum carriage position
+#define X2_HOME_POS X2_MAX_POS // default home position is the maximum carriage position
     // However: In this mode the EXTRUDER_OFFSET_X value for the second extruder provides a software
     // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops
     // without modifying the firmware (through the "M218 T1 X???" command).
@@ -202,8 +202,8 @@
 #define DEFAULT_DUAL_X_CARRIAGE_MODE 0
 
 // Default settings in "Auto-park Mode"
-#define TOOLCHANGE_PARK_ZLIFT   5      // the distance to raise Z axis when parking an extruder
-#define TOOLCHANGE_UNPARK_ZLIFT 8        // the distance to raise Z axis when unparking an extruder
+#define TOOLCHANGE_PARK_ZLIFT   0.8      // the distance to raise Z axis when parking an extruder
+#define TOOLCHANGE_UNPARK_ZLIFT 1        // the distance to raise Z axis when unparking an extruder
 
 // Default x offset in duplication mode (typically set to half print bed width)
 #define DEFAULT_DUPLICATION_X_OFFSET 100
