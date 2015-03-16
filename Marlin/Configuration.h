@@ -28,6 +28,9 @@ Here are some standard links for getting your machine calibrated:
 // example_configurations/delta directory.
 //
 
+
+#define Z_OFFSET {1, 2, 3}
+
 //===========================================================================
 //============================= SCARA Printer ===============================
 //===========================================================================
@@ -361,12 +364,20 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
 // Travel limits after homing (units are in mm)
-#define X_MAX_POS 323
+#define X_MAX_POS 327
 #define X_MIN_POS 0
 #define Y_MAX_POS 160
 #define Y_MIN_POS 0
 #define Z_MAX_POS 200
 #define Z_MIN_POS 0
+
+////SIGMA Travel Limits
+//#define X_MAX_POS 285
+//#define X_MIN_POS 0
+//#define Y_MAX_POS 220
+//#define Y_MIN_POS 0
+//#define Z_MAX_POS 150
+//#define Z_MIN_POS 0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
 #define Y_MAX_LENGTH (Y_MAX_POS - Y_MIN_POS)
@@ -510,9 +521,15 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // default settings
 
+//BCN3D+
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,2560,458.3}  // default steps per unit for Ultimaker
-#define DEFAULT_MAX_FEEDRATE          {250, 250, 3, 25}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {350, 350, 3, 25}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,50,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+
+////SIGMA TEST
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {160,160,3200,916.6}  // default steps per unit for Ultimaker
+//#define DEFAULT_MAX_FEEDRATE          {350, 350, 3, 25}    // (mm/sec)
+//#define DEFAULT_MAX_ACCELERATION      {9000,9000,50,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          2000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  2000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
