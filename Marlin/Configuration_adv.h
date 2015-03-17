@@ -198,7 +198,8 @@
 //                           actions of the first x-carriage. This allows the printer to print 2 arbitrary items at
 //                           once. (2nd extruder x offset and temp offset are set using: M605 S2 [Xnnn] [Rmmm])
 
-#define EXTRUDER1_Z_OFFSET 0.3
+#define EXTRUDER_OFFSET_Z {0 , -0.3}
+
 
 // This is the default power-up mode which can be later using M605.
 #define DEFAULT_DUAL_X_CARRIAGE_MODE 0

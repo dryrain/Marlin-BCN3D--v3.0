@@ -4,3 +4,5 @@ Debug/
 *.atsln
 *.cppproj
 *.cppproj
+*.elf
+*.hex
