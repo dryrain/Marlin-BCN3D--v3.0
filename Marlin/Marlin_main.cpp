@@ -4272,6 +4272,11 @@ for (int s = 1; s <= steps; s++) {
 	  //Rapduch toolchange
 	if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE)
 	{
+		plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS], current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
+		plan_buffer_line(destination[X_AXIS], current_position[Y_AXIS], raised_parked_position[Z_AXIS],current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
+		current_position[X_AXIS]=destination[X_AXIS];
+		current_position[Z_AXIS]=raised_parked_position[Z_AXIS];
+		st_synchronize();
 		//plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT - offset_seen, //lift
 		//current_position[E_AXIS], max_feedrate[Z_AXIS]/2, active_extruder);
 		//plan_buffer_line(destination[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT - offset_seen, //Move X --> moving down will be handled below
