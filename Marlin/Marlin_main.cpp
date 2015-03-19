@@ -192,8 +192,9 @@
 #endif
 
 //Rapduch
+float z_restaurada;
 float offset_seen;
-
+float zFinalCorrection;
 
 float homing_feedrate[] = HOMING_FEEDRATE;
 bool axis_relative_modes[] = AXIS_RELATIVE_MODES;
@@ -3934,7 +3935,10 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
       #if EXTRUDERS > 1
       if(tmp_extruder != active_extruder) {
         // Save current position to return to after applying extruder offset
-        memcpy(destination, current_position, sizeof(destination));
+		z_restaurada = current_position[Z_AXIS];
+        memcpy(destination, current_position, sizeof(destination)); //Gets overwritten by first Gcode read
+		SERIAL_ECHOPGM("Z restaurada: ");
+		SERIAL_ECHOLN(z_restaurada);
       #ifdef DUAL_X_CARRIAGE
         if (dual_x_carriage_mode == DXC_AUTO_PARK_MODE && Stopped == false &&
             (delayed_move_time != 0 || current_position[X_AXIS] != x_home_pos(active_extruder)))
@@ -3949,13 +3953,14 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
           st_synchronize();
 		  
         }
-		
+		 int zlift;
 		//Rapduch toolchange
-		if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE && current_position[X_AXIS] != x_home_pos(active_extruder)) //DUAL FULL CONTROL and HOMED
+		if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE && current_position[X_AXIS] != x_home_pos(active_extruder)) //DUAL FULL CONTROL and NOT HOMED
 		{
-			make_move = true; //Does an unparking move after parking the first extruder. Takes in consideration the extruder offset
-			next_feedrate=9000;
-			feedrate = 9000;
+			zlift = TOOLCHANGE_PARK_ZLIFT;
+			//make_move = true; //Does an unparking move after parking the first extruder. Takes in consideration the extruder offset
+			//next_feedrate=9000;
+			//feedrate = 9000;
 			
 			// Park old head: 1) raise 2) move to park position 3) lower
 			plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_PARK_ZLIFT,
@@ -3965,6 +3970,9 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
 			//plan_buffer_line(x_home_pos(active_extruder), current_position[Y_AXIS], current_position[Z_AXIS] ,current_position[E_AXIS], max_feedrate[Z_AXIS]/2, active_extruder);
 			st_synchronize();
 			current_position[Z_AXIS]= current_position[Z_AXIS]+TOOLCHANGE_PARK_ZLIFT;
+		} else if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE && current_position[X_AXIS] == x_home_pos(active_extruder))
+		{
+			zlift = 0;	
 		}
 
 
@@ -3976,14 +3984,25 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
                      extruder_offset[Z_AXIS][active_extruder] +
                      extruder_offset[Z_AXIS][tmp_extruder];					 
 					 
-					 //Rapduch
-					 SERIAL_ECHOPGM("Current Z:  ");
-					 SERIAL_ECHOLN(current_position[Z_AXIS]);
 					 
-					 offset_seen = extruder_offset[Z_AXIS][tmp_extruder]-extruder_offset[Z_AXIS][active_extruder];
+		
+		if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE && current_position[X_AXIS] == x_home_pos(active_extruder)) //DUAL FULL CONTROL and HOMED
+		{
+			
+		}
 					 
-					 SERIAL_ECHOPGM("Offset Z:  ");
-					 SERIAL_ECHOLN(offset_seen);
+			//Rapduch
+			SERIAL_ECHOPGM("Current Z:  ");
+			SERIAL_ECHOLN(current_position[Z_AXIS]);
+					 
+			offset_seen = extruder_offset[Z_AXIS][tmp_extruder]-extruder_offset[Z_AXIS][active_extruder];
+					 
+					 
+			zFinalCorrection=zlift-(offset_seen);
+			
+			
+			SERIAL_ECHOPGM("Offset Z:  ");
+			SERIAL_ECHOLN(offset_seen);
 
 
         active_extruder = tmp_extruder;
@@ -3998,7 +4017,7 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
           //inactive_extruder_x_pos = destination[X_AXIS];
 		  
 		  memcpy(raised_parked_position, current_position, sizeof(raised_parked_position));
-		  raised_parked_position[Z_AXIS] += TOOLCHANGE_UNPARK_ZLIFT;
+		  //raised_parked_position[Z_AXIS] += TOOLCHANGE_UNPARK_ZLIFT;
 		  active_extruder_parked = true;
         }
         else if (dual_x_carriage_mode == DXC_DUPLICATION_MODE)
@@ -4272,21 +4291,16 @@ for (int s = 1; s <= steps; s++) {
 	  //Rapduch toolchange
 	if (dual_x_carriage_mode == DXC_FULL_CONTROL_MODE)
 	{
-		plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS], current_position[E_AXIS], max_feedrate[Z_AXIS]/4, active_extruder);
-		plan_buffer_line(destination[X_AXIS], current_position[Y_AXIS], raised_parked_position[Z_AXIS],current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
+		plan_buffer_line(current_position[X_AXIS], destination[Y_AXIS], raised_parked_position[Z_AXIS],current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);	
+		plan_buffer_line(destination[X_AXIS], destination[Y_AXIS], raised_parked_position[Z_AXIS],current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);	
 		current_position[X_AXIS]=destination[X_AXIS];
-		current_position[Z_AXIS]=raised_parked_position[Z_AXIS];
+		current_position[Y_AXIS]=destination[Y_AXIS];
+		if (current_position[Z_AXIS]==destination[Z_AXIS]) //Correct the offset
+		{
+			plan_buffer_line(destination[X_AXIS], destination[Y_AXIS], z_restaurada, current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
+			destination[Z_AXIS]=z_restaurada;
+		}
 		st_synchronize();
-		//plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT - offset_seen, //lift
-		//current_position[E_AXIS], max_feedrate[Z_AXIS]/2, active_extruder);
-		//plan_buffer_line(destination[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT - offset_seen, //Move X --> moving down will be handled below
-		//current_position[E_AXIS], max_feedrate[X_AXIS], active_extruder);
-		// plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS]+offset_seen ,current_position[E_AXIS], max_feedrate[Z_AXIS]/2, active_extruder);
-		 //plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS] + TOOLCHANGE_UNPARK_ZLIFT,current_position[E_AXIS], max_feedrate[Z_AXIS], active_extruder);
-		 //plan_buffer_line(raised_parked_position[X_AXIS], raised_parked_position[Y_AXIS], raised_parked_position[Z_AXIS],    current_position[E_AXIS], max_feedrate[Z_AXIS]/3, active_extruder);
-		 //plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], raised_parked_position[Z_AXIS],current_position[E_AXIS], min(max_feedrate[X_AXIS],max_feedrate[Y_AXIS]/2), active_extruder);
-		 //plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS],current_position[E_AXIS], max_feedrate[Z_AXIS]/3, active_extruder);
-		 //st_synchronize();
 		 active_extruder_parked = false;
 	}
 	  
