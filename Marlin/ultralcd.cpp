@@ -614,6 +614,12 @@ static void lcd_prepare_menu() {
       MENU_ITEM(gcode, MSG_SWITCH_PS_ON, PSTR("M80"));
     }
   #endif
+  //Rapduch
+  #ifdef DUAL_X_CARRIAGE
+  MENU_ITEM(gcode,"Tool 1",PSTR("T0"));
+  MENU_ITEM(gcode,"Tool 2",PSTR("T1"));
+#endif
+
   MENU_ITEM(submenu, MSG_MOVE_AXIS, lcd_move_menu);
 	
   END_MENU();
